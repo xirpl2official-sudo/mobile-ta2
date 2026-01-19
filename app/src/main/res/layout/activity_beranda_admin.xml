@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".BerandaAdminActivity">
+
+    <!-- Vector Background untuk Toolbar -->
+    <View
+        android:id="@+id/VectorAtasMenu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_menu_atas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBarContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08">
+
+        <!-- Icon Menu (Kiri) -->
+        <ImageView
+            android:id="@+id/iconMenu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/menu"
+            android:contentDescription="@string/Menu"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Logo Sekolah -->
+        <ImageView
+            android:id="@+id/logoSekolah"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/logo_smk"
+            android:contentDescription="@string/LogoSMKN2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent="0.8"
+            app:layout_constraintStart_toEndOf="@id/iconMenu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="14dp" />
+
+        <!-- Text Dashboard -->
+        <TextView
+            android:id="@+id/textDashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Beran"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_beranda"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/logoSekolah"
+            app:layout_constraintTop_toTopOf="@id/logoSekolah"
+            app:layout_constraintBottom_toTopOf="@id/textNamaSekolah"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginStart="10dp" />
+
+        <!-- Text Nama Sekolah -->
+        <TextView
+            android:id="@+id/textNamaSekolah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Stemdasi"
+            android:textColor="#E0E0E0"
+            android:textSize="@dimen/text_smkn2s"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="@id/textDashboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textDashboard"
+            app:layout_constraintBottom_toBottomOf="@id/logoSekolah"
+            android:layout_marginEnd="8dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ScrollView untuk Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layout_constraintTop_toBottomOf="@id/topBarContent"
+        app:layout_constraintBottom_toTopOf="@id/VectorBawah"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/spacing_medium"
+            android:paddingVertical="@dimen/spacing_large"
+            android:clipToPadding="false"
+            android:clipChildren="false">
+
+            <!-- Grid 4 Card Statistik -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/statsContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Card Total Siswa (Kiri Atas) -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTotalSiswa"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/card_shadow_blue"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/cardHadirHariIni"
+                    app:layout_constraintWidth_percent="0.4"
+                    app:layout_constraintDimensionRatio="W,1:1.3"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_shadow_blue">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="12dp">
+
+                            <!-- Label di Kiri Atas -->
+                            <TextView
+                                android:id="@+id/tvTotalSiswaLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/TotalSiswa"
+                                android:textColor="#666666"
+                                android:textSize="@dimen/text_admin_card_label"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <!-- Value di Tengah -->
+                            <TextView
+                                android:id="@+id/tvTotalSiswaValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/text_value_card"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <!-- Icon di Kanan Bawah -->
+                            <ImageView
+                                android:id="@+id/iconTotalSiswa"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:src="@drawable/users"
+                                android:contentDescription="@string/TotalSiswa"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintWidth_percent="0.20"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card Hadir Hari Ini (Kanan Atas) -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardHadirHariIni"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/card_shadow_green"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cardTotalSiswa"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.4"
+                    app:layout_constraintDimensionRatio="W,1:1.3"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_shadow_green">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="12dp">
+
+                            <!-- Label di Kiri Atas -->
+                            <TextView
+                                android:id="@+id/tvHadirHariIniLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/TotalHadirHariIni"
+                                android:textColor="#666666"
+                                android:textSize="@dimen/text_admin_card_label"
+                                android:maxLines="2"
+                                android:ellipsize="end"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+                            <!-- Value di Tengah -->
+                            <TextView
+                                android:id="@+id/tvHadirHariIniValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/text_value_card"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <!-- Icon di Kanan Bawah -->
+                            <ImageView
+                                android:id="@+id/iconHadirHariIni"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:src="@drawable/centang"
+                                android:contentDescription="@string/TotalHadirHariIni"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintWidth_percent="0.20"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card Izin/Sakit (Kiri Bawah) -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardIzinSakit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/card_shadow_orange"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTotalSiswa"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/cardKehadiran"
+                    app:layout_constraintWidth_percent="0.4"
+                    app:layout_constraintDimensionRatio="W,1:1.3"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="26dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_shadow_orange">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="12dp">
+
+                            <!-- Label di Kiri Atas -->
+                            <TextView
+                                android:id="@+id/tvIzinSakitLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/IzinSakit"
+                                android:textColor="#666666"
+                                android:textSize="@dimen/text_admin_card_label"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <!-- Value di Tengah -->
+                            <TextView
+                                android:id="@+id/tvIzinSakitValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/text_value_card"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <!-- Icon di Kanan Bawah -->
+                            <ImageView
+                                android:id="@+id/iconIzinSakit"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:src="@drawable/jam"
+                                android:contentDescription="@string/IzinSakit"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintWidth_percent="0.20"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card Kehadiran (Kanan Bawah) -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardKehadiran"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/card_shadow_purple"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:layout_constraintTop_toBottomOf="@id/cardHadirHariIni"
+                    app:layout_constraintStart_toEndOf="@id/cardIzinSakit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.4"
+                    app:layout_constraintDimensionRatio="W,1:1.3"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="26dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_shadow_purple">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="12dp">
+
+                            <!-- Label di Kiri Atas -->
+                            <TextView
+                                android:id="@+id/tvKehadiranLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/Kehadiran"
+                                android:textColor="#666666"
+                                android:textSize="@dimen/text_admin_card_label"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <!-- Value di Tengah -->
+                            <TextView
+                                android:id="@+id/tvKehadiranValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/text_value_card"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <!-- Icon di Kanan Bawah -->
+                            <ImageView
+                                android:id="@+id/iconKehadiran"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:src="@drawable/bar"
+                                android:contentDescription="@string/Kehadiran"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintWidth_percent="0.20"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Card Jadwal Sholat Terdekat -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardJadwalTerdekat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@id/statsContainer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="24dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium">
+
+                    <!-- Icon Clock + Title -->
+                    <ImageView
+                        android:id="@+id/iconJadwal"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_jadwal"
+                        android:contentDescription="@string/JadwalSholatTerdekat"
+                        app:tint="#2196F3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvJadwalLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/JadwalSholatTerdekat"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/text_prayer_title"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/iconJadwal"
+                        app:layout_constraintTop_toTopOf="@id/iconJadwal"
+                        app:layout_constraintBottom_toBottomOf="@id/iconJadwal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="@dimen/spacing_small" />
+
+                    <!-- Prayer Card -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardPrayerDetail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:layout_constraintTop_toBottomOf="@id/tvJadwalLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="12dp">
+
+                        <!-- Stroke border -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/stroke_border_prayer" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp">
+
+                            <!-- Sun Icon (left side) -->
+                            <ImageView
+                                android:id="@+id/iconPrayer"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:src="@drawable/ic_sun"
+                                android:contentDescription="Dhuha"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintWidth_percent="0.06"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/tvNamaSholat"
+                                app:layout_constraintTop_toTopOf="@id/tvNamaSholat"
+                                app:layout_constraintBottom_toBottomOf="@id/tvNamaSholat"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                android:layout_marginStart="8dp" />
+
+                            <!-- Prayer Name -->
+                            <TextView
+                                android:id="@+id/tvNamaSholat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dhuha"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/text_prayer_name"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@id/iconPrayer"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="8dp" />
+
+                            <!-- Prayer Time -->
+                            <TextView
+                                android:id="@+id/tvWaktuSholat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Waktu : 07.00 - 08.00"
+                                android:textColor="#666666"
+                                android:textSize="@dimen/text_prayer_time"
+                                app:layout_constraintStart_toStartOf="@id/tvNamaSholat"
+                                app:layout_constraintTop_toBottomOf="@id/tvNamaSholat"
+                                android:layout_marginTop="4dp" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- RecyclerView untuk List Jurusan -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvJurusan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardJadwalTerdekat"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_large"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_jurusan"
+                tools:itemCount="8" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/VectorBawah"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_menu_atas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.065" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
